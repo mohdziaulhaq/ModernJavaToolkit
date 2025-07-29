@@ -110,3 +110,36 @@ System.out.println("Result of the comparator is: " + comparator.compare(3, 2));
 Comparator<Integer> comparator1 = (Integer a, Integer b) -> a.compareTo(b);
 System.out.println("Result of the comparator1 using lambda is: " + comparator1.compare(3, 2));
 ```
+## 🔧 Functional Interfaces in Java 8
+
+### ✅ What is a Functional Interface?
+
+A **Functional Interface** is an interface that contains **only one abstract method**. It can have:
+- One abstract method (required)
+- Any number of `default` or `static` methods
+
+Functional interfaces are the foundation of **lambda expressions** in Java 8.
+
+---
+
+### 📘 Annotation: `@FunctionalInterface`
+
+You can use the `@FunctionalInterface` annotation to make it explicit and to prevent accidental addition of more abstract methods.
+
+```java
+@FunctionalInterface
+interface MyFunctionalInterface {
+    void doSomething();
+}
+```
+New Functional Interfaces in Java 8
+
+ - Consumer - BiConsumer
+ - Predicate - BiPredicate
+ - Function - BiFunction, UnaryOperator, BinaryOperator
+
+| Interface       | Method        | Input Type | Return Type | Use Case                                       |
+| --------------- | ------------- | ---------- | ----------- | ---------------------------------------------- |
+| `Consumer<T>`   | `accept(T t)` | Takes `T`  | `void`      | Performing operations like logging or printing |
+| `Predicate<T>`  | `test(T t)`   | Takes `T`  | `boolean`   | Filtering data (true/false)                    |
+| `Function<T,R>` | `apply(T t)`  | Takes `T`  | Returns `R` | Data transformation / conversion               |
