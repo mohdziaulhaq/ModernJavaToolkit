@@ -53,3 +53,60 @@ public interface Runnable {
     public abstract void run();
 }
 ```
+Example
+```
+// Java 8 Lambda
+        // () -> {}
+        Runnable runnableThread = () -> {
+            System.out.println("Inside RunnableThread");
+        };
+
+        Runnable runnableThread2 = () -> System.out.println("Inside RunnableThread2");
+        new Thread(runnableThread2).start();
+
+        new Thread( () -> System.out.println("Inside Runnable")).start();
+```
+
+Lambda in Practice (Things to keep in mind)
+
+
+ > () -> single expression; // curly braces not needed
+
+ > () -> { Multiple statements }; // curly braces are needed for multiple statements
+
+## 🧮 Comparator and compareTo() in Java
+
+### 🔹 What is `compareTo()`?
+
+`compareTo()` is used to define **natural ordering** for objects by comparing them.
+
+- It comes from the `Comparable<T>` interface.
+- It returns:
+    - the value 0 if this Integer is equal to the argument Integer;  
+    - a value less than 0(negative) if this Integer is numerically less than the argument Integer;
+    - and a value greater than 0(positive) if this Integer is numerically greater than the argument Integer
+
+### 🔹 When to use `Comparator`?
+
+If you want to define **custom sorting logic** (especially different from the natural order), you use a `Comparator`.
+
+---
+
+### 🟡 Java 7 Style: Anonymous Class
+
+```java
+Comparator<Integer> comparator = new Comparator<Integer>() {
+    @Override
+    public int compare(Integer o1, Integer o2) {
+        return o1.compareTo(o2); // 0 → equal, 1 → o1 > o2, -1 → o1 < o2
+    }
+};
+
+System.out.println("Result of the comparator is: " + comparator.compare(3, 2));
+```
+
+### Java 8 Lambda Expression
+```java
+Comparator<Integer> comparator1 = (Integer a, Integer b) -> a.compareTo(b);
+System.out.println("Result of the comparator1 using lambda is: " + comparator1.compare(3, 2));
+```
