@@ -28,3 +28,28 @@ System.out.println("Sum using Imperative approach :" + sum);
 int sum1 = IntStream.rangeClosed(0, 100).sum();
 System.out.println("Sum using Declarative approach :" + sum1);
 ```
+
+### Lambda Expression
+
+> Lambda is equivalent to a function(method) without a name
+
+Syntax:
+
+ ```
+    ()          ->          { }
+Input params   arrow    Lambda body
+```
+Usage:
+    Implement functional interfaces( SAM( single abstract method))
+
+```
+@FunctionalInterface
+public interface Comparator<T> {
+    int compare(T o1, T o2);
+}
+
+@FunctionalInterface
+public interface Runnable {
+    public abstract void run();
+}
+```
